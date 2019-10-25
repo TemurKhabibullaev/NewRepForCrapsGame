@@ -13,10 +13,10 @@ total_amount = balance - bet
 def start():
     # Balance
     print('''
-    Welcome to Craps Game!
-    The Dice will be rolled!''')
+Welcome to Craps Game!
+The Dice will be rolled!''')
     total_amount = balance - bet
-    while bet > total_amount:
+    while bet < total_amount:
         rollDice()
         game()
 
