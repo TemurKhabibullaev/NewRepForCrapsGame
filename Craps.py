@@ -16,8 +16,9 @@ def start():
     Welcome to Craps Game!
     The Dice will be rolled!''')
     total_amount = balance - bet
-    rollDice()
-    game()
+    while bet > total_amount:
+        rollDice()
+        game()
 
 
 def finish():
