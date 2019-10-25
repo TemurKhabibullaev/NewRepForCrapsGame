@@ -3,20 +3,21 @@
 import random
 import time
 
-# Balance
-print('''
-Welcome to Craps Game!
-You will be asked the full amount of money from your bankroll.
-And how much you will spend from it for your bet.
-The Dice will be rolled!''')
 print('ENTER your balance:')
 balance = int(input('> '))
-
-# Betting
 print("Good! Let's start! Place how much you bet!")
 bet = int(input('> '))
-
 total_amount = balance - bet
+
+
+def start():
+    # Balance
+    print('''
+    Welcome to Craps Game!
+    The Dice will be rolled!''')
+    total_amount = balance - bet
+    rollDice()
+    game()
 
 
 def finish():
@@ -24,10 +25,7 @@ def finish():
 
 
 def rollDice():
-    print('Rolling in the deep...')
-    time.sleep(3)
     points = random.randint(2,12)
-    print('This is your final points: ',points)
     return points
 
 
@@ -40,8 +38,10 @@ def loosing():
     lost_money = total_amount - bet * 2
     print('You lose. This is your lose amount:', lost_money)
 
-roll = rollDice()
-while bet <= balance:
+
+def game():
+    roll = rollDice()
+    print('Your dice: ', roll)
     if int(roll) == 7 or int(roll) == 11:
         time.sleep(3)
         win()
@@ -64,7 +64,10 @@ while bet <= balance:
             loosing()
     decision = input('Are we playing? Know - wins or loses will be cut from your balance. Enter an INTEGER only:\n1) Yes\n2) No\n> ')
     if int(decision) == 1:
-        rollDice()
+        start()
     elif int(decision) != 1:
         print('Good Luck! See you next time.')
-        break
+        finish()
+
+
+start()
